@@ -1,0 +1,29 @@
+{
+  "name": "gulp-inspmlog",
+  "version": "1.0.0",
+  "description": "inspm 自动埋点工具",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arashivision/gulp-inspmlog.git"
+  },
+  "keywords": [
+    "spm",
+    "inspm"
+  ],
+  "author": "JailBreak",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Arashivision/gulp-inspmlog/issues"
+  },
+  "homepage": "https://github.com/Arashivision/gulp-inspmlog#readme",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.8",
+    "through2": "^2.0.3"
+  }
+}
