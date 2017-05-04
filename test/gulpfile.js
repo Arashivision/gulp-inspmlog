@@ -1,12 +1,11 @@
-var gulp      = require('gulp');
-var path      = require('path');
-var spmlog    = require('../index');
+let gulp      = require('gulp');
+let path      = require('path');
+let spmlog    = require('../index');
 
 gulp.task('spmlog', function () {
-    gulp.src('./*.html')
-        .pipe(spmlog({
-            logkey: 'x',
-            selector: 'a, .btn'
-        }))
-        .pipe(gulp.dest('./'));
+  gulp.src('./*.html')
+    .pipe(spmlog({
+      selector: 'a, .btn'
+    }))
+    .pipe(gulp.dest('./'));
 });
