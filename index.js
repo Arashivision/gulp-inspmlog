@@ -27,8 +27,10 @@ function inspmlog(options) {
             var ret = str.slice(0, -1) + ' data-inspm-id="' + locaid + '">'
             return ret 
         })
-        let relativePath = path.relative(__dirname, file.path)
-        console.log('%s %d tag has been tagged.', relativePath, count)
+        if(count > 0) {
+            let relativePath = path.relative(__dirname, file.path)
+            console.log('%s %d tag has been tagged.', relativePath, count)
+        }
 
         file.contents = new Buffer(parsedHtml);
 
