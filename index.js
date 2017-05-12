@@ -4,7 +4,6 @@ var util      = require('util');
 var gutil     = require('gulp-util');
 var through2  = require('through2');
 var sutil     = require('./lib/sutil');
-var cheerio   = require('cheerio');
 var Error     = gutil.PluginError;
 
 
@@ -16,40 +15,20 @@ var Error     = gutil.PluginError;
  */ 
 
 function inspmlog(options) {
-    var selector = options.selector;
-
     return through2.obj(function(file, enc, cb) {
-
-        if (!selector || !util.isString(selector)) {
-            return cb(new Error('inspmlog', '缺少元素选择字段：selector'));
-        }
-
+        let count = 0;
         var html = file.contents.toString('utf8');
         var parsedHtml = html.replace(/<a( |\n)(.|\n)*?>/g, function(str) {
             if(/data-inspm-id/g.test(str)) {
                 return str
             }
+            count++
             var locaid = sutil.genRandom().substring(0, 8);
             var ret = str.slice(0, -1) + ' data-inspm-id="' + locaid + '">'
-            console.log(ret)
             return ret 
         })
-        // console.log('eleArray:', eleArray)
-
-        // replacedArray = eleArray.filter(function (ele) {
-        //     if(/<a( |\n)([^>]|\n)*data-inspm-id(.|\n)*?>/g.test(ele)) {
-        //         return false
-        //     }
-        //     return true
-        // })
-
-        // replacedArray.
-
-        // let $item = $(item)
-
-        // if(!$item.attr('data-inspm-id')) {
-        // $item.attr('data-inspm-id', locaid)
-        // }
+        let relativePath = path.relative(__dirname, file.path)
+        console.log('%s %d tag has been tagged.', relativePath, count)
 
         file.contents = new Buffer(parsedHtml);
 

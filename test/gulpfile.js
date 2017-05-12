@@ -4,8 +4,6 @@ let spmlog    = require('../index');
 
 gulp.task('spmlog', function () {
   gulp.src('./*.html')
-    .pipe(spmlog({
-      selector: 'a, .btn'
-    }))
+    .pipe(spmlog())
     .pipe(gulp.dest('../dist'));
 });
