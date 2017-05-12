@@ -25,18 +25,33 @@ function inspmlog(options) {
         }
 
         var html = file.contents.toString('utf8');
-        var $ = cheerio.load(html)
-
-        $(selector).each(function (index, item) {
-          let $item = $(item)
-
-          if(!$item.attr('data-inspm-id')) {
+        var parsedHtml = html.replace(/<a( |\n)(.|\n)*?>/g, function(str) {
+            if(/data-inspm-id/g.test(str)) {
+                return str
+            }
             var locaid = sutil.genRandom().substring(0, 8);
-            $item.attr('data-inspm-id', locaid)
-          }
+            var ret = str.slice(0, -1) + ' data-inspm-id="' + locaid + '">'
+            console.log(ret)
+            return ret 
         })
+        // console.log('eleArray:', eleArray)
 
-        file.contents = new Buffer($.html());
+        // replacedArray = eleArray.filter(function (ele) {
+        //     if(/<a( |\n)([^>]|\n)*data-inspm-id(.|\n)*?>/g.test(ele)) {
+        //         return false
+        //     }
+        //     return true
+        // })
+
+        // replacedArray.
+
+        // let $item = $(item)
+
+        // if(!$item.attr('data-inspm-id')) {
+        // $item.attr('data-inspm-id', locaid)
+        // }
+
+        file.contents = new Buffer(parsedHtml);
 
         cb(null, file);
     });

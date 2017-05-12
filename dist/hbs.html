@@ -1,0 +1,417 @@
+
+{{#extend "resources"}}
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://static.insta360.com/assets/operation/0054/1f7019bbbf7341bc190d3e954a1cbe9f/nano.png" />
+  <meta property="og:image:width" content="1500" />
+  <meta property="og:image:height" content="1500" />
+
+  <!-- 引用样式 -->
+  <link rel="stylesheet" href="/public/css/dev/product/nano/nano.css">
+  <link href="{{@app.cdn}}/ajax/libs/video.js/5.10.2/video-js.min.css" rel="stylesheet">
+  
+  <style>
+    .video-js .vjs-play-progress {
+      background-color: #ffd200;
+    }  
+    
+    .video-js .vjs-play-progress:before {
+      color: #ffd200;
+    }        
+  </style>  
+{{/extend}}
+
+<!-- 顶部导航 -->
+{{> header/index}}
+
+{{> nano_header/index}}
+
+  <!-- 顶部导航 -->
+  <div class="fullpage">
+
+    <div class="pagebar">
+      <a href="#" class="_pageup" data-inspm-id="a475f3a5"></a>
+      <div class="count">-/-</div>
+      <a href="#" class="_pagedown" data-inspm-id="da1ac881"></a>
+    </div>
+
+    <div class="page-tips">
+      <a href="#" class="_pagedown" data-inspm-id="8f5804ef"></a>
+    </div>
+
+    <div class="section sec1">
+
+      <div class="section-ct">
+        <video id="video-bg" class="video-bg" preload="preload">
+          <source src="{{__ 'nano_background_video'}}" type="video/mp4">
+          <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://help.insta360.com" target="_blank" data-inspm-id="9f89be2c">supports HTML5 video</a></p>
+        </video>
+
+        <div class="mask"></div>
+        <div class="ces">
+          <a href="https://blog.insta360.com/insta360-wins-prestigious-ces-innovation-award/" target="_blank" data-inspm-id="773780dd">
+          <img class="brand" data-retina-url="/public/images/event/ces/ces.png" data-img-type="normal" alt="">
+          </a>
+        </div>
+      </div>
+
+      <div class="intro">
+        <img class="brand" data-retina-url="/public/images/v3/product/insta360-nano/common/logo.png"
+          data-img-type="normal" alt="">
+        <p class="text-slogan">
+          {{{__ 'nano_func_text'}}}
+        </p>
+        
+        {{#if lang.isOversea}}
+          <div class="btn-ct">
+            <a id="watch-intro" href="javascript:;" class="btn btn-large btn-transparent btn-border" onclick="fbq('track', 'WatchVideoNano');ga('send', 'event', 'watch_video', 'click', 'watch_video_nano'); " data-inspm-id="3ab31c3b">
+              <img data-retina-url="/public/images/v4/common/nano_ic_playvideo.png" data-img-type="normal" alt="">
+              <span>{{__ "nano_func_play"}}</span>
+            </a>
+            <a class="btn btn-large btn-yellow btn-nano" href="{{__ 'nano_buy_link'}}" target="_blank"  onclick="purchaseTracking('overview_buy_nano', 'nano'); ga('send', 'event', 'buy_desktop', 'click', 'buy_nano_center'); " data-inspm-id="45aae672">
+              {{__ "nano_nav_buy"}}
+            </a>
+            <a href="mailto:sales@insta360.com" class="reseller" target="_blank" onclick="fbq('track', 'ResellerNano'); ga('send', 'event', 'reseller', 'click', 'reseller_nano'); " data-inspm-id="4dc87999">{{{__ "become_reseller"}}}</a>
+          </div>
+
+          <div class="btn-ct btn-sm-ct">
+            <a class="btn btn-sm btn-img" href="/live" target="_blank" data-inspm-id="ae358752"><img data-retina-url="/public/images/v4/common/facebooklive.png" data-img-type="normal" alt=""></a>
+            <a class="btn btn-sm btn-img twitter-live" href="{{__ 'nano_func_twitter_live_link'}}" target="_blank" data-inspm-id="9f02bb7d">
+              <img data-retina-url="/public/images/v4/common/periscope.png" data-img-type="normal" alt="">
+            </a>
+            <a class="btn btn-sm btn-img" onclick="fbq('track', 'UserGroupNano');ga('send', 'event', 'user_group', 'click', 'user_group_nano');" href="https://www.facebook.com/groups/474514739424333/" target="_blank" data-inspm-id="18a6be5c"><img data-retina-url="/public/images/v4/common/usergroup.png" data-img-type="normal" alt=""></a>
+          </div>
+        {{else}}
+        <div class="btn-ct">
+          <a id="watch-intro" class="btn btn-large btn-yellow" href="#" onclick="_hmt.push(['_trackEvent', 'watch_video', 'click', 'watch_video_nano']);" data-inspm-id="ea95f4ea">
+            <img data-retina-url="/public/images/v4-mobile/product/nano/common/icon-play.png" data-img-type="normal" alt="" class="icon"/>
+            <span>{{{__ 'nano_func_play'}}}</span>
+          </a>
+          
+          <a class="btn btn-large btn-yellow btn-nano" href="{{__ 'nano_buy_link'}}" target="_blank"  onclick="purchaseTracking('overview_buy_nano', 'nano');_hmt.push(['_trackEvent', 'buy_desktop', 'click', 'buy_nano_center']);" data-inspm-id="9bd0fdc0">
+              {{__ "nano_nav_buy"}}
+            </a>
+
+          <a href="mailto:sales@insta360.com" class="reseller" target="_blank" onclick="_hmt.push(['_trackEvent', 'reseller', 'click', 'reseller_nano']);" data-inspm-id="1144d67a">{{{__ "become_reseller"}}}</a>
+        </div>
+        {{/if}}
+      </div>
+
+      <div class="popup-player">
+        <div class="mask"></div>
+        <video id="video-fr" class="video-fr video-js vjs-default-skin">
+          {{#if lang.isOversea}}
+          <source src="{{__ 'nano_intro_video'}}" type="video/mp4">                                        
+          {{else}}
+          <source src="{{__ 'nano_background_video'}}" type="video/mp4">
+          {{/if}}
+          <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank" data-inspm-id="cf1bcb19">supports HTML5 video</a></p>
+        </video>
+        
+        <div class="text-intro">
+          <a href="#" class="link" data-inspm-id="06521830">{{{__ "nano_func_learnmore"}}}</a>
+          <div class="info">
+            <img class="brand" data-retina-url="/public/images/v3/product/insta360-nano/common/logo.png"
+              data-img-type="normal"/>
+            <p class="title">{{{__ "nano_func_iphone_text"}}}
+            </p>
+            {{#unless lang.isOversea}}
+            <p class="price">{{@product.nano_price}}</p>
+            {{/unless}}
+            <a href="{{__ 'nano_buy_link'}}" target="_blank" class="btn btn-yellow btn-buy btn-nano" onclick="purchaseTracking('overview_buy_nano', 'nano');" data-inspm-id="7d15021f">{{{__ 'nano_nav_buy'}}}</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="section sec2">
+      <div class="section-ct">
+        <div class="background">
+          <div class="center">
+            ANYTHING
+          </div>
+          <div class="bottom">
+            <div class="desc">
+              <div class="left">
+                <p class="box-l">
+                  <span class="upper">3040 x 1520 @ 30fps</span>
+                  {{__ "nano_func_video"}}
+                </p>
+
+                <p class="box-r">
+                  <span class="upper">360° × 360°</span>
+                  {{__ "nano_func_camera"}}
+                </p>
+              </div>
+              <div class="right">
+                <p class="box-f">
+                  <span class="text-en">{{{__ "nano_func_360"}}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="animate-ct">
+        <img class="iphone" data-retina-url="/public/images/v3/product/insta360-nano/2/iphone.png"
+          data-img-type="normal" alt="">
+        <img class="camera" data-retina-url="/public/images/v3/product/insta360-nano/2/camera.png"
+          data-img-type="normal" alt="">
+      </div>
+    </div>
+
+    <div class="section sec3">
+      <div class="section-ct" style="display: block;">
+        <div class="background">
+        </div>
+        <div class="desc">
+          <div class="title">
+            <p>
+              {{{__ "nano_func_pano_text1"}}}
+            </p>
+          </div>
+          <div class="sub">
+            <p>{{{__ "nano_func_video_text"}}}</p>
+          </div>
+          <div class="preview-ct">
+            <a class="preview-link" href="javascript:;" data-title="{{{__ 'nano_func_video_title3'}}}" data-url="{{{__ 'nano_video_url_3'}}}" data-download="{{{__ 'nano_video_download_3'}}}" data-inspm-id="425d4a5e">
+              <img class="preview" data-retina-url="/public/images/v3/product/insta360-nano/3/preview3.png" data-img-type="normal" alt="">
+            </a>
+            <a class="preview-link" href="javascript:;" data-title="{{{__ 'nano_func_video_title4'}}}" data-url="{{{__ 'nano_video_url_4'}}}" data-download="{{{__ 'nano_video_download_4'}}}" data-inspm-id="f5b88eb3">
+              <img class="preview" data-retina-url="/public/images/v3/product/insta360-nano/3/preview4.png" data-img-type="normal" alt="">
+            </a>
+            <a class="preview-link" href="javascript:;" data-title="{{{__ 'nano_func_video_title5'}}}" data-url="{{{__ 'nano_video_url_5'}}}" data-download="{{{__ 'nano_video_download_5'}}}" data-inspm-id="4cc603f1">
+              <img class="preview" data-retina-url="/public/images/v3/product/insta360-nano/3/preview5.png" data-img-type="normal" alt="">
+            </a>
+            <a class="preview-link" href="javascript:;" data-title="{{{__ 'nano_func_video_title0'}}}" data-url="{{{__ 'nano_video_url_0'}}}" data-download="{{{__ 'nano_video_download_0'}}}" data-inspm-id="5c0ba582">
+              <img class="preview" data-retina-url="/public/images/v3/product/insta360-nano/3/preview0.png" data-img-type="normal" alt="">
+            </a>
+            <!--
+            <a class="preview-link" href="javascript:;" data-title="{{{__ 'nano_func_video_title1'}}}" data-url="{{{__ 'nano_video_url_1'}}}" data-download="{{{__ 'nano_video_download_1'}}}" data-inspm-id="a69892f2">
+              <img class="preview" data-retina-url="/public/images/v3/product/insta360-nano/3/preview1.png" data-img-type="normal" alt="">
+            </a>
+            <a class="preview-link" href="javascript:;" data-title="{{{__ 'nano_func_video_title2'}}}" data-url="{{{__ 'nano_video_url_2'}}}" data-download="{{{__ 'nano_video_download_2'}}}" data-inspm-id="42b84b67">
+              <img class="preview" data-retina-url="/public/images/v3/product/insta360-nano/3/preview2.png" data-img-type="normal" alt="">
+            </a>
+            -->
+          </div>
+        </div>
+      </div>    
+    </div>
+    <!-- 为了遮住全部元素，将遮罩移到外部 -->
+    <div class="pano-ct">
+      <div class="pano-ctl">
+        <div class="pano-player">
+          
+        </div>
+        <p class="title">Insta360 Nano 样片</p>
+        <div class="act">
+          <a class="download" target="_blank" href="#" data-inspm-id="a75f9758"><img data-retina-url="/public/images/v3/product/insta360-nano/3/download.png" data-img-type="normal" alt=""></a>
+          <a class="cancle" href="javascript:;" data-inspm-id="b4d59470"><img data-retina-url="/public/images/v3/product/insta360-nano/3/cancle.png" data-img-type="normal" alt=""></a>
+        </div>
+        <div class="arr left-arr">
+          <img data-retina-url="/public/images/v3/product/insta360-nano/3/left.png" data-img-type="normal" alt="">
+        </div>
+        <div class="arr right-arr">
+          <img data-retina-url="/public/images/v3/product/insta360-nano/3/right.png" data-img-type="normal" alt="">
+        </div>
+        <div class="bottom-tip">
+          {{{__ "nano_demo_tips"}}}
+        </div>
+      </div>
+    </div>
+
+    <div class="section sec4">
+      <div class="section-ct">
+        <div class="background">
+          <div class="top">
+            <p>{{{__ "nano_func_nano_text1"}}}
+            </p>
+          </div>
+          <div class="center">
+            ANYWHERE
+          </div>
+          <div class="bottom">
+            <div class="sub">
+              <p class="box-l">
+                <span class="upper">70g</span>
+                {{__ "nano_func_nano_text2"}}
+              </p>
+              <p class="box-r">
+                <span class="upper">110 × 33 × 21 mm</span>
+                {{__ "nano_func_nano_text3"}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="animate-ct">
+        <img class="cam-left" data-retina-url="/public/images/v3/product/insta360-nano/4/cam-left.png"
+          data-img-type="normal"/>
+
+
+        <img class="cam-center" data-retina-url="/public/images/v3/product/insta360-nano/4/cam-center.png"
+          data-img-type="normal"/>
+
+        <img class="cam-right" data-retina-url="/public/images/v3/product/insta360-nano/4/cam-right.png"
+          data-img-type="normal"/>
+      </div>
+    </div>
+
+    <div class="section sec5">
+      <div class="section-ct">
+        <div class="background">
+        </div>
+      </div>
+      <div class="animate-ct">
+        <div class="block block-1">
+          <div class="mask"></div>
+        </div>
+        <div class="block block-2">
+          <div class="mask"></div>
+        </div>
+        <div class="block block-3">
+          <div class="mask"></div>
+        </div>
+        <div class="block block-4">
+          <div class="mask"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section sec7">
+      <div class="section-ct">
+        <div class="background">
+          <div class="top">
+            <p>{{{__ "nano_func_share_text1"}}}</p>
+            <p class="small">{{{__ "nano_func_share_text2"}}}</p>
+            <a href="/live" data-inspm-id="4095de4a">{{{__ "nano_func_share_text3"}}}</a>
+          </div>
+          <div class="center">
+            SHARE
+          </div>
+        </div>
+      </div>
+      <div class="bubbles-ct">
+        <a href="/live" target="_blank" class="bubble float-bubble-1" data-inspm-id="a045cc2b">
+          <img data-retina-url="/public/images/v3/product/insta360-nano/7/facebook.png" alt=""
+            data-img-type="normal" data-img-lang="{{lang.imgLang}}">          
+        </a>       
+
+        <!--<img class="bubble float-bubble-2"-->
+          <!--data-retina-url="/public/images/v3/product/insta360-nano/7/moments.png" alt=""-->
+          <!--data-img-type="normal">-->
+        <!--<img class="bubble float-bubble-3"-->
+          <!--data-retina-url="/public/images/v3/product/insta360-nano/7/tumblr.png" alt=""-->
+          <!--data-img-type="normal">-->
+        <a href="/live" target="_blank" class="bubble float-bubble-4" data-inspm-id="79d904f8">
+          <img data-retina-url="/public/images/v3/product/insta360-nano/7/twitter.png" alt=""
+            data-img-type="normal">
+        </a>
+        <a href="/live" target="_blank" class="bubble float-bubble-5" data-inspm-id="a23353a3">
+          <img data-retina-url="/public/images/v3/product/insta360-nano/7/wechat.png" alt=""
+            data-img-type="normal" data-img-lang="{{lang.imgLang}}">
+          </a>
+        <a href="/live" target="_blank" class="bubble float-bubble-6" data-inspm-id="f64450b5">
+          <img data-retina-url="/public/images/v3/product/insta360-nano/7/weibo.png" alt=""
+            data-img-type="normal" data-img-lang="{{lang.imgLang}}">
+          </a>
+      </div>
+      <div class="animate-ct">
+        <img class="iphone" data-retina-url="/public/images/v3/product/insta360-nano/7/iphone.png"
+          data-img-type="normal" data-img-lang="{{lang.imgLang}}"/>
+
+        <img class="nano" data-retina-url="/public/images/v3/product/insta360-nano/7/camera.png"
+          data-img-type="normal"/>
+      </div>
+    </div>
+
+    <div class="section sec8">
+      <div class="section-ct">
+        <div class="background">
+          <div class="center">
+            PARTY
+          </div>
+        </div>
+      </div>
+      <div class="float-mask">
+        <div class="float-text">
+          <p>{{{__ "nano_func_party_text1"}}}
+          </p>
+        </div>          
+        <img class="fload-img float-img-1" data-back-text="AAAAA"
+          data-retina-url="/public/images/v3/product/insta360-nano/8/001.png" data-img-type="normal"/>
+        <img class="fload-img float-img-2" data-back-text="BBBBB"
+          data-retina-url="/public/images/v3/product/insta360-nano/8/002.png" data-img-type="normal"/>
+        <img class="fload-img float-img-3" data-back-text="CCCCC"
+          data-retina-url="/public/images/v3/product/insta360-nano/8/003.png" data-img-type="normal"/>
+        <img class="fload-img float-img-4" data-back-text="DDDDD"
+          data-retina-url="/public/images/v3/product/insta360-nano/8/004.png" data-img-type="normal"/>
+        <img class="fload-img float-img-5" data-back-text="EEEEE"
+          data-retina-url="/public/images/v3/product/insta360-nano/8/005.png" data-img-type="normal"/>
+        <img class="fload-img float-img-6" data-back-text="EEEEE"
+          data-retina-url="/public/images/v3/product/insta360-nano/8/006.png" data-img-type="normal"/>
+      </div>
+    </div>
+
+    <div class="section sec9">
+      <div class="section-ct">
+        <div class="background">
+          <div class="center">
+            360
+          </div>
+        </div>
+      </div>
+      <div class="text-ct">
+
+        <div class="info">
+          <img class="brand" data-retina-url="/public/images/v3/product/insta360-nano/common/logo-dark.png"
+            data-img-type="normal"/>
+
+          <p class="title">{{{__ "nano_func_iphone_text"}}}
+          </p>
+          {{#unless lang.isOversea}}
+          <p class="price">{{@product.nano_price}}</p>
+          {{/unless}}
+          <a href="{{__ 'nano_buy_link'}}" target="_blank" class="btn btn-yellow btn-buy btn-nano" onclick="purchaseTracking('overview_buy_nano', 'nano');" data-inspm-id="145839a7">{{{__ 'nano_nav_buy'}}}</a>
+
+          <p class="desc">
+            {{{__ "nano_func_mif"}}}
+          </p>
+
+          <img class="mfi" data-retina-url="/public/images/v3/product/insta360-nano/9/MFI.png"
+            data-img-type="normal"/>
+        </div>
+        
+        <img class="nano" data-retina-url="/public/images/v3/product/insta360-nano/9/camera-new.png"
+          data-img-type="normal"/>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!--底部信息-->
+  {{#if lang.isOversea}}
+  {{> nano_mailchimp/index}}
+  {{/if}}
+  <div class="bottom-info">
+    <div class="middle">
+      <div class="container">
+        {{> nano_footer_ad/index}}
+        <a href="/product/insta360-nano/app" class="link" data-inspm-id="4f67d0e4">
+        {{__ "nano_func_goapp"}}
+        </a>
+      </div>
+    </div>
+  </div>
+  
+{{#extend "scripts"}}
+  <script type="application/javascript" src="{{@app.cdn}}/ajax/libs/move.js/0.4.0/move.min.js"></script>   
+  <script type="application/javascript" src="{{@app.cdn}}/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+  <script src="{{@app.cdn}}/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+  <script src="{{@app.cdn}}/ajax/libs/video.js/5.10.2/ie8/videojs-ie8.min.js"></script>
+  <script src="{{@app.cdn}}/ajax/libs/video.js/5.10.2/video.min.js"></script>  
+  <script type="application/javascript" src="/public/js/dev/product/nano/nano.js"></script>
+{{/extend}}

@@ -7,5 +7,5 @@ gulp.task('spmlog', function () {
     .pipe(spmlog({
       selector: 'a, .btn'
     }))
-    .pipe(gulp.dest('./'));
+    .pipe(gulp.dest('../dist'));
 });
