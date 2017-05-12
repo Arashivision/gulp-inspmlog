@@ -1,6 +1,6 @@
 {
   "name": "gulp-inspmlog",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "inspm 自动埋点工具",
   "main": "index.js",
   "scripts": {
